@@ -1,0 +1,10 @@
+(*Caso 1:
+ Escribir un programa que detecte el nombre introducido por el usuario
+*)
+program caso1;
+var
+nombre:string;
+
+begin
+nombre:='Pascal'
+end.
