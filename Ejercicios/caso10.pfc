@@ -1,0 +1,72 @@
+(*
+Caso 10:
+ Realizar un programa de cajero automático realizando las siguientes operaciones:
+ a. Debe iniciar con 1000 soles en la cuenta.
+ b. Debe solicitar y definir si la clave ingresada es correcta.
+ c. Debe desplegar un menú de opciones (extraer dinero, depositar dinero, 
+ transferir dinero, consultar saldo)
+ d. Dada la opción seleccionada por el usuario debe ejecutar la operación.
+ e. Debe preguntar al usuario si desea ver el resumen de la operación (el valor 
+ en soles que queda en la cuenta luego de ejecutar la operación).
+ f. Debe preguntar al usuario si desea realizar otra operación
+*)
+
+program caso10;
+var
+	i,opcion,cuenta,contra,retiro,deposito,transferir:integer;
+	
+begin
+	i:=0;
+	cuenta:=1000;
+	writeln('---CAJERO AUTOMATICO---');
+	writeln('Ingrese la contraseña');
+	readln(contra);
+	if contra=123 then
+	begin
+		while (i=0) do
+		begin
+			writeln('---MENU DEL CAJERO AUTOMATICO---');
+			writeln('1-EXTRAER DINERO');
+			writeln('2-DEPOSITAR DINERO');
+			writeln('3-TRANSFERIR DINERO');
+			writeln('4-CONSULTAR SALDO');
+			writeln('5-SALIR');
+			readln(opcion);
+			if opcion=1 then
+				begin
+					writeln('Cuando dinero desea retirar');
+					readln(retiro);
+					cuenta:=cuenta-retiro;
+				end;
+			if opcion=2 then
+				begin
+					writeln('Cuando dinero desea depositar');
+					readln(deposito);
+					cuenta:=cuenta+deposito;
+				end;
+			if opcion=3 then
+				begin
+					writeln('Cuando dinero desea transferir');
+					readln(transferir);
+					cuenta:=cuenta-transferir;
+				end;
+			if opcion=4 then
+				begin
+					writeln('SALDO ACTUAL: ', cuenta);
+					
+				end;
+			if opcion=5 then 
+				begin
+					i:=1;
+					writeln('Saliendo del programa...');
+				end;
+			if cuenta<=0 then
+				writeln('La cuenta no cuenta con dinero');
+		end;
+	end
+	else 
+		writeln('CONTRASENA INCORRECTA')
+	
+	
+	
+end.

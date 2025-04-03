@@ -1,0 +1,25 @@
+(*
+Caso 3:
+ Escribir un programa que dado un número del 1 al 12 escriba el correspondiente 
+ nombre del mes del año.
+*)
+program caso3;
+var numero:integer;
+begin
+writeln('Ingrese un numero del 1 al 12 para determinar su mes del anio');
+readln(numero);
+if numero=1 then writeln('Enero');
+if numero=2 then writeln('Febrero');
+if numero=3 then writeln('Marzo');
+if numero=4 then writeln('Abril');
+if numero=5 then writeln('Mayo');
+if numero=6 then writeln('Junio');
+if numero=7 then writeln('Julio');
+if numero=8 then writeln('Agosto');
+if numero=9 then writeln('Septiembre');
+if numero=10 then writeln('Octubre');
+if numero=11 then writeln('Noviembre');
+if numero=12 then writeln('Diciembre');
+
+
+end.

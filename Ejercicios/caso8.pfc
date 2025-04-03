@@ -1,0 +1,22 @@
+program caso8;
+var
+	numero1,numero2,numero3:integer;
+begin
+writeln('Un numero');
+readln(numero1);
+writeln('Ingrese otro numero');
+readln(numero2);
+if numero1 > numero2 then
+	begin
+		writeln('Ingrese otro numero');
+		readln(numero3);
+		if numero2 > numero3 then
+		
+			writeln('Los numeros fueron ', numero1, ' ', numero2,' ', numero3)
+		else
+			writeln('El orden de los numeros no es decreciente')
+		
+	end
+else
+	writeln('El orden de los numeros no es decreciente')
+end.

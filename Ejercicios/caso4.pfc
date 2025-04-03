@@ -1,0 +1,17 @@
+(*
+Caso 4:
+ Escribir un programa que detecte si un número leído desde el teclado es 
+ mayor o menor que 100.
+*)
+program caso4;
+var
+numero:integer;
+begin
+writeln('Ingrese un numero para determinar si es mayor o menor que 100');
+readln(numero);
+if numero > 100 then 
+	writeln('Mayor que 100')
+else 
+	writeln('Menor que 100')
+
+end.

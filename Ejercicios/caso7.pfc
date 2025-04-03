@@ -1,0 +1,13 @@
+(*
+Caso 7:
+ Escribir un programa que una vez leída una hora en formato (horas, minutos, 
+ segundos)indique cuál será el tiempo en segundos.
+*)
+program caso7;
+var hora:integer;
+begin
+writeln('Ingrese las horas');
+readln(hora);
+hora := hora * 3600;
+write('la hora convertida a segundos es ',hora,' segundos');
+end.

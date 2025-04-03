@@ -1,0 +1,17 @@
+(*
+Caso 9:
+ Escribir un programa que visualice en pantalla los números múltiplos de 7
+ comprendidos entre 1 y 100
+*)
+program caso9;
+var
+i:integer;
+begin
+writeln('Los multiplos de 7 del 1 al 100 son');
+i:=7;
+while i<100 do
+	begin
+	writeln(i);
+	i:= i + 7;
+	end
+end.

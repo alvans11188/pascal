@@ -1,0 +1,19 @@
+(*
+Caso 5:
+ Escribir un programa que dado un número del 1 al 7 escriba el correspondiente 
+ nombre del día de la semana
+*)
+program caso5;
+var 
+	numero:integer;
+begin
+	writeln('Ingrese un numero');
+	readln(numero);
+	if numero = 1 then writeln('lunes');
+	if numero = 2 then writeln('martes');
+	if numero = 3 then writeln('miercoles');
+	if numero = 4 then writeln('jueves');
+	if numero = 5 then writeln('viernes');
+	if numero = 6 then writeln('sabado');
+	if numero = 7 then writeln('domingo');
+end.

@@ -1,0 +1,24 @@
+(*
+ Caso 6:
+ En una tienda se venden productos de primera necesidad a los cuales se les 
+ aplica un descuento del 10% de la compra total, si esta es igual o mayor a 
+ S/.150. Escriba un programa que, a partir del importe total de la compra 
+ muestre lo que debe pagar el cliente
+*)
+program caso6;
+var
+	total, descuento:integer;
+	
+begin
+	writeln('Ingrese el total de la compra');
+	readln(total);
+	if total > 150 then
+	begin
+		descuento := total * 10 div 100;
+		total := total - descuento;
+		writeln('El pago es: ', total);
+	end
+	else
+		writeln('El pago es: ', total);
+	
+end.
