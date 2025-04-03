@@ -1,0 +1,88 @@
+- Pascal-FC for IBM PC compatibles - 
+- GNU Compiler Version P5.2
+
+G L Davies  &  A Burns, University of York
+
+Compiler listing
+
+    1     0 program operaciones;
+    2     0 begin
+    3     0  writeln('5+2=',5+2);
+    4     7  writeln('5-2=',5-2);
+    5    14  writeln('5/2=',5/2);
+    6    23  writeln('5*2=',5*2);
+    7    30  writeln('7 div 2 =', 7 div 2);
+    8    37  writeln('7 mod 2 =',7 mod 2);
+    9    44  writeln('La raiz de 5 es',sqrt(5));
+   10    51  writeln('Numero al azar', random(10));
+   11    57 end.
+
+
+
+Symbol table
+
+    name       link      objekt       type         ref      nrm  lev  adr  aux
+
+ 45 _main        44     procedure   notyp           2      True    0    0    0
+ 46 any           0     variable    synch           0      True    1    5    0
+
+Generated P-code
+
+    0     ldcon.i      0         4          ;3
+    1     wrstr        0         0          ;3
+    2     ldcon.i      0         5          ;3
+    3     ldcon.i      0         2          ;3
+    4     addop.i      0         0          ;3
+    5     wrval.i      0         0          ;3
+    6     wrlin        0         0          ;3
+    7     ldcon.i      0         4          ;4
+    8     wrstr        0         4          ;4
+    9     ldcon.i      0         5          ;4
+   10     ldcon.i      0         2          ;4
+   11     subop.i      0         0          ;4
+   12     wrval.i      0         0          ;4
+   13     wrlin        0         0          ;4
+   14     ldcon.i      0         4          ;5
+   15     wrstr        0         8          ;5
+   16     ldcon.i      0         5          ;5
+   17     ldcon.i      0         2          ;5
+   18     float        0         0          ;5
+   19     float        0         1          ;5
+   20     divop.r      0         0          ;5
+   21     wrval.r      0         0          ;5
+   22     wrlin        0         0          ;5
+   23     ldcon.i      0         4          ;6
+   24     wrstr        0        12          ;6
+   25     ldcon.i      0         5          ;6
+   26     ldcon.i      0         2          ;6
+   27     mulop.i      0         0          ;6
+   28     wrval.i      0         0          ;6
+   29     wrlin        0         0          ;6
+   30     ldcon.i      0         9          ;7
+   31     wrstr        0        16          ;7
+   32     ldcon.i      0         7          ;7
+   33     ldcon.i      0         2          ;7
+   34     divop.i      0         0          ;7
+   35     wrval.i      0         0          ;7
+   36     wrlin        0         0          ;7
+   37     ldcon.i      0         9          ;8
+   38     wrstr        0        25          ;8
+   39     ldcon.i      0         7          ;8
+   40     ldcon.i      0         2          ;8
+   41     modop.i      0         0          ;8
+   42     wrval.i      0         0          ;8
+   43     wrlin        0         0          ;8
+   44     ldcon.i      0        15          ;9
+   45     wrstr        0        34          ;9
+   46     ldcon.i      0         5          ;9
+   47     float        0         0          ;9
+   48     stfun.r      0        15          ;9
+   49     wrval.r      0         0          ;9
+   50     wrlin        0         0          ;9
+   51     ldcon.i      0        14          ;10
+   52     wrstr        0        49          ;10
+   53     ldcon.i      0        10          ;10
+   54     stfun.i      0        19          ;10
+   55     wrval.i      0         0          ;10
+   56     wrlin        0         0          ;10
+   57     stopx        0         0          ;10

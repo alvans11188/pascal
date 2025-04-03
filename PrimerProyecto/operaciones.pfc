@@ -1,0 +1,11 @@
+program operaciones;
+begin
+	writeln('5+2=',5+2);
+	writeln('5-2=',5-2);
+	writeln('5/2=',5/2);
+	writeln('5*2=',5*2);
+	writeln('7 div 2 =', 7 div 2);
+	writeln('7 mod 2 =',7 mod 2);
+	writeln('La raiz de 5 es',sqrt(5));
+	writeln('Numero al azar', random(10));
+end.
