@@ -1,0 +1,33 @@
+(*intento 1*)
+program prog;
+var 
+	estado:integer;
+	
+process P1;	
+begin
+	repeat
+		while estado=0 do;
+		estado:=0;
+		writeln('Proceso 1 esta en su seccion critica');
+		estado:=1;
+		forever
+end;
+
+process p2;
+begin
+	repeat 
+		while  estado=0 do;
+		estado:=0;
+		writeln('Proceso 2 esta en su seccion critica');
+		estado:=1;
+		forever
+end;
+
+begin
+estado:=1;
+	cobegin
+		p1;
+		p2;
+	coend;
+		
+end.

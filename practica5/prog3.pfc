@@ -1,0 +1,31 @@
+(*intento 3*)
+program prog3;
+var s1,s2:boolean;
+
+process p1;
+	begin
+		repeat
+			while s2=true do;
+			s1:=true;
+			(*seccion critica del proceso 1*)
+			writeln('proceso 1 en su seccion critica');
+			s1:=false;
+		forever
+	end;
+ process p2;
+ 	begin
+ 		repeat
+ 		while s1=true do;
+ 		s2:=true;
+ 		(*seccion critica del proceso 2*)
+ 		writeln('proceso 2 en su seecion critica');
+ 		s2:=false;
+ 	forever;
+end;
+
+begin
+	cobegin
+		p1;
+		p2;
+	coend
+end.

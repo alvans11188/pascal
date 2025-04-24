@@ -1,0 +1,31 @@
+program prog4;
+var
+	s1,s2:integer;
+process p1;
+begin
+	repeat
+		s1:=1;
+		while s2=1 do;
+		writeln('proceso 1 esta en su seccion critica');
+		s1:=0;
+	forever
+end;
+
+process p2;
+begin
+	repeat
+	s2:=1;
+	while s1=1 do;
+	writeln('Proceso 2 esta en su seccion critica');
+	s2:=0; 
+	forever
+end;
+
+begin
+s1:=0;
+s2:=0;
+	cobegin
+	p1;
+	p2;
+	coend;
+end.

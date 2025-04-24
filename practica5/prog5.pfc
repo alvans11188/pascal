@@ -1,0 +1,40 @@
+program prog5;
+var
+	s1,s2:integer;
+(*s1=true=1 y s2=false=0*)
+
+process p1;
+begin
+	repeat
+	s1:=1;
+	while s2=1 do
+		begin
+		s1:=0;
+		s1:=1;
+		end;
+	writeln('***seccion critica p1***');
+	s1:=0;
+	forever
+end;
+
+process p2;
+begin 
+	repeat
+	s2:=1;
+	while s1=1 do
+		begin
+		s2:=0;
+		s2:=1;
+		end;
+		writeln('....seccion critica p2...');
+		s2:=0;
+	forever;
+end;
+begin
+s1:=0;
+s2:=0;
+	cobegin
+	p1;
+	p2;
+	coend;
+end.

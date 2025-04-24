@@ -1,0 +1,57 @@
+(*dekker *)
+program prog6;
+var
+	turno,suma:integer;
+	s1,s2:boolean;
+(*suma s variable compartida*)
+process p1;
+	begin
+		repeat
+			s1:=true;
+			while s2=true do
+				begin
+					if turno=2 then
+						begin
+							s1:=false;
+							while turno=2 do;
+							s1:=true;
+						end;
+					end;
+				writeln('El proceso 1 se encuentra en su SC');
+				suma:=suma+2;
+				writeln('la suma total es:  ', suma);
+				turno:=2;
+				s1:=false;
+			forever
+		end;
+			
+process p2;
+	begin
+		repeat
+			s2:=true;
+			while s1=true do
+				begin
+					if turno=1 then
+						begin
+							s2:=false;
+							while turno=1 do;
+							s2:=true;
+						end;
+					end;
+					writeln('El proceso 2 se encuentra en su SC');
+					suma:=suma-1;
+					writeln('la sum total es:  ', suma);
+					turno:=1;
+					s2:=false;
+				forever
+			end;
+begin
+	suma:=0;
+	turno:=2;
+	s1:=false;
+	s2:=false;
+	cobegin
+		p1;
+		p2;
+	coend;
+end.
