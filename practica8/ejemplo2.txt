@@ -1,0 +1,32 @@
+program ejemplo2;
+var n: integer;
+sletra,simpreso:semaphore;
+letra:char;
+process productor;
+begin
+	repeat
+		wait(simpreso);
+		for letra :='A' TO 'Z' do
+		begin
+			writeln('se mando a imprimir letra: ', letra);
+			signal(sletra);
+		end;
+	forever
+end;
+process impresora;
+begin
+	repeat
+		wait(sletra);
+		writeln('se imprimio la letra: ',letra);
+		signal(simpreso);
+	forever
+		
+end;
+begin
+	initial(simpreso,1);
+	initial(sletra,0);
+	cobegin
+		productor;
+		impresora;
+	coend;
+end.
