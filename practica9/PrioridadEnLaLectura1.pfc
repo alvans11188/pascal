@@ -1,0 +1,49 @@
+program PrioridadEnLaEscritura2;
+
+var mutex, wrt : semaphore;
+var lec: integer;
+
+process type lector;
+begin
+repeat
+	(*Protocolo de entrada*)
+	wait(mutex);
+	lec := lec + 1;
+	if (lec = 1) then
+		wait (wrt);
+	signal(mutex);
+	writeln('Leer del recurso');
+	wait(mutex);
+	lec := lec - 1;
+	(*Protocolo de salida*)
+	if (lec = 0) then
+		signal(wrt);
+	signal(mutex);
+	forever
+end;
+
+process type escritor;
+begin
+	repeat
+		(*Protocolo de entrada*)
+		wait(wrt);
+		writeln('Escribir recurso');
+		(*Protocolo de salida*)
+		signal(wrt);
+	forever
+end;
+
+var i : integer;
+	LE: array[0..3] of lector;
+	ES: array[0..3] of escritor;
+
+begin
+	initial(wrt, 1);
+	initial(mutex, 1);
+	lec := 0;
+	cobegin
+		
+		for i := 0 to 3 do
+		LE[i]; ES[i];
+	coend
+end.

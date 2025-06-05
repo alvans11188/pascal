@@ -1,0 +1,101 @@
+program PrioridadEnLaEscritura3;
+
+var mutex,writer,reader:semaphore;
+var lec,nle,nee : integer;
+var writing : boolean;
+
+process type lector;
+(*program lcpl;*)
+
+begin
+	repeat
+		(*protocolo de entrada*)
+		wait(mutex);
+		if(writing = true or(nee >0)) then
+			begin
+				nle:=nle+1;
+				signal(mutex);
+				wait(reader);
+				nle:=nle-1;
+			end;
+		lec:=lec+1;
+		if(nle>0) then
+			begin
+				signal(reader);
+			end
+		else
+			begin
+				signal(mutex);
+			end;
+		writeln('leer del reurso');
+		(*protocolo de salida*)
+		
+		wait(mutex);
+		lec:=lec-1;
+		if((lec=0) and (nee>0)) then
+			begin
+				signal(writer);
+			end
+		else
+			begin
+				signal(mutex);
+			end;
+	forever	
+end;
+process type escritor;
+begin
+	repeat
+		wait(mutex);
+		if(writing = true or(lec >0)) then
+			begin
+				nee:=nee+1;
+				signal(mutex);
+				wait(reader);
+				nee:=nee-1;
+			end;
+		writing:=true;
+		signal(mutex);
+		writeln('escribir recurso');
+		
+		wait(mutex);
+		(*nee:=nee-1;*)
+		writing:=false;
+		(*desbloquear un escritor que este en espera*)
+
+		if(nee>0) then
+			begin
+				signal(reader);
+			end
+			else
+			begin
+				if(nle>0) then
+					begin
+					signal(reader);
+					end
+				else
+					begin
+						signal(mutex);
+					end;
+			end;
+		
+	forever
+end;
+var i:integer;
+	LE: array [0..2] of lector;
+	ES: array [0..2] of escritor;
+begin
+	
+	initial(mutex,1);
+	initial(writer,0);
+	initial(reader,0);
+	writing:=false;
+	lec:=0;
+	nle:=0;
+	nee:=0;
+	cobegin
+		for i:=0 to 1 do
+		LE[i];ES[i];
+	coend
+end.
+
+
