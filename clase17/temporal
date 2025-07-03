@@ -1,0 +1,15 @@
+algoritmo barbero dormilon
+-barbero,cliente, 
+bloquear variables compartidas
+generador de solicitudes
+vector de hilos, cada
+
+
+- codigo fuente
+- pruebas de ejecucion
+
+conclusiones, eficiente para evitar interbloqueos, usando varaibles compartidas en este caso en el servidor web las respuestas al usuario sean mas rapidas escalables, ademas de no consumir muchos recursos.
+
+implementaron , monitores o semaforos.
+hubiera sido bueno que muestre el programa con semaforos y monitores, cual es mas eficiente. 
+diagrama de flujo.
