@@ -1,0 +1,88 @@
+program barbero2;
+
+monitor Barberia;
+export entrarCliente, finCorte, atenderCliente;
+
+var
+  sillas: integer;
+  clientes: integer;
+  ocupado: boolean;
+  esperando, listo: condition;
+
+procedure entrarCliente(i: integer);
+begin
+  if sillas = 0 then
+  begin
+    write('Cliente ');
+    write(i);
+    writeln(' se va porque no hay sillas disponibles.');
+  end
+  else
+  begin
+    sillas := sillas - 1;
+    clientes := clientes + 1;
+    write('Cliente ');
+    write(i);
+    writeln(' se sienta y espera su turno.');
+    resume(listo);
+    delay(esperando);
+  end;
+end;
+
+procedure atenderCliente;
+begin
+  if clientes = 0 then
+  begin
+    writeln('Barbero duerme.');
+    delay(listo);
+  end;
+  clientes := clientes - 1;
+  ocupado := true;
+  resume(esperando);
+end;
+
+procedure finCorte;
+begin
+  ocupado := false;
+  sillas := sillas + 1;
+end;
+
+begin
+  sillas := 3;         
+  clientes := 0;
+  ocupado := false;
+end;
+
+process type Cliente(i: integer);
+var
+  t: integer;
+begin
+  repeat
+    t := (i * 2) mod 5 + 1;  
+    
+    Barberia.entrarCliente(i);
+  forever
+end;
+
+process type Barbero;
+begin
+  repeat
+    Barberia.atenderCliente;
+    writeln('Barbero corta el pelo');
+      
+    Barberia.finCorte;
+  forever
+end;
+
+var
+  i: integer;
+  C: array[0..4] of Cliente;
+  B: Barbero;
+
+begin
+  cobegin
+    B;
+    for i := 0 to 4 do
+      C[i](i);
+  coend
+end.
